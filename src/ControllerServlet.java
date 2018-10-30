@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class ControllerServlet extends HttpServlet {
+
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         Map<String, String[]> parameters = request.getParameterMap();
         ServletContext context = request.getServletContext();
@@ -21,6 +22,6 @@ public class ControllerServlet extends HttpServlet {
             return;
         }
 
-        //context.getRequestDispatcher("/alternative").forward(request, response);
+        context.getRequestDispatcher("/index.jsp").forward(request, response);
     }
 }

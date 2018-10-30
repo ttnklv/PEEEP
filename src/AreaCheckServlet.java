@@ -23,7 +23,7 @@ public class AreaCheckServlet extends HttpServlet {
     }
 
     private void addResult(HttpServletRequest request, Result result) {
-        HttpSession session = request.getSession();
+        HttpSession session = request.getSession(true);
 
         String name = "ListOfResultAttributes";
 

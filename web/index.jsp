@@ -12,7 +12,7 @@
 </head>
 <body>
 <h1>Dear, User!</h1>
-<form method="get" action="/controller">
+<form method="get" action="${pageContext.request.contextPath}/controller">
 <div id="inputX" >Введите значение числа X:
 
     <p><label><input type="radio" class="radio" name="X" value="-4">
