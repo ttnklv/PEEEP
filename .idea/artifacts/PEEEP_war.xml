@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="PEEEP:war">
+    <output-path>$PROJECT_DIR$/out/artifacts/PEEEP_war</output-path>
+    <root id="archive" name="PEEEP_war.war">
+      <element id="artifact" artifact-name="PEEEP:war exploded" />
+    </root>
+  </artifact>
+</component>
