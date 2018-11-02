@@ -1,7 +1,7 @@
 public class Result {
-    float x, y, r;
+    double x, y, r;
     String result;
-    Result(float x, float y, float r, String result) {
+    Result(double x, double y, double r, String result) {
         this.x = x;
         this.y = y;
         this.r = r;
