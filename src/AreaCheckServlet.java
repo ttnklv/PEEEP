@@ -36,7 +36,7 @@ public class AreaCheckServlet extends HttpServlet {
         }
 
         String answer;
-        if (areaCheck(x, y, r)) answer ="ok"; //"попадание";
+        if (areaCheck(x, y, r)) answer = "ok"; //"попадание";
         else answer = "не попадание";
 
         Result result = new Result(x, y, r, answer);
@@ -62,7 +62,7 @@ public class AreaCheckServlet extends HttpServlet {
     private boolean areaCheck(double x, double y, double r) {
         boolean[] flag = {false, false, false};
 
-        if ((x * x + y * y <= r * r) && (x >= 0 && x<= r) && (y >= 0 && y<=r)) {
+        if ((x * x + y * y <= r * r) && (x >= 0 && x <= r) && (y >= 0 && y <= r)) {
             flag[0] = true;
         }
         if ((y <= (-2 * x + r)) && (x >= -r / 2 && x <= 0) && (y >= 0 && y <= r)) {
@@ -83,7 +83,7 @@ public class AreaCheckServlet extends HttpServlet {
 //        if (answer) out.print("попадание");
 //        else out.print("не попадание");
         out.print("<html> <!DOCTYPE HTML> <html> <head> <meta charset='UTF-8'> <title>Points</title>\n" +
-                "</head><body>" + x + result.y +
+                "</head><body>" + x + "y = " + result.y + "r = " + result.r +"x = " + result.x +
                 "ghgbggggg</body> </html>");
 
     }

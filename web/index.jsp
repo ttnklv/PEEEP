@@ -16,11 +16,56 @@
     <script type="text/javascript">
         <%@include file="canvas.js"%>
     </script>
+
+    <script>
+        function showError(container, errorMessage) {
+            container.className = 'error';
+            let msgElem = document.createElement('span');
+            msgElem.className = "error-message";
+            msgElem.innerHTML = errorMessage;
+            container.appendChild(msgElem);
+        }
+
+        function resetError(container) {
+            container.className = 'light entry';
+            if (container.lastChild.className === "error-message") {
+                container.removeChild(container.lastChild);
+            }
+        }
+
+        function validate() {
+            resetError(document.xyForm.Y.parentNode);
+            let yLabel = document.getElementById("inpY");
+            let result = yLabel.value.match(/^(\-|\+)?([0-9]+((\.|\,)[0-9]+)?)((E|e)\-?[0-9]+)?$/);
+
+            if(result){
+                if (yLabel.value < -3 || yLabel.value > 3){
+                    showError(document.xyForm.Y.parentNode, 'значение Y должно принадлежать (-3,3)');
+                    return false;
+                }else{
+                    resetError(document.xyForm.Y.parentNode);
+                    return true;
+                }
+            }else {
+                showError(document.xyForm.Y.parentNode, 'значение Y должно принадлежать (-3,3)');
+                return false;
+            }
+        }
+    </script>
+
+
 </head>
 <body>
+
+<div id="header" class="head">
+    <h1>Дашкова Мария / Яковлева Татьяна  | P3211 | 28104</h1>
+    <h2>Определить попадание точки на координатную плоскость</h2>
+</div>
+
+
 <div class="light entry">Dear, User!</div>
 
-<form method="get" action="${pageContext.request.contextPath}/controller">
+<form method="get" action="${pageContext.request.contextPath}/controller" name="xyForm" onsubmit="return validate()">
 
     <div id="inputX" class="light entry">Введите значение числа X:
 
@@ -69,10 +114,14 @@
     </div>
 
 
-    <div id="inputY" class="light entry">Введите значение числа Y:
-        <label>
-            <input type="text" name="Y" maxlength="5">
-        </label></div>
+    <%--<div id="inputY" class="light entry">Введите значение числа Y:--%>
+        <%--<label>--%>
+            <%--<input type="text" name="Y" maxlength="5">--%>
+        <%--</label></div>--%>
+
+    <div id="inputY">Введите значение числа Y:
+        <input type="text" maxlength="5"  id="inpY" name="Y" placeholder="(-3, 3) ">
+    </div>
 
     <div id="inputR" class="light entry">Введите значение числа R:
 
@@ -101,7 +150,7 @@
 
     </div>
 
-    <div><p><input type="submit"></p></div>
+    <div><p><input type="submit" ></p></div>
 </form>
 
 </body>
