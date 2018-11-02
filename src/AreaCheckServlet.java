@@ -39,6 +39,14 @@ public class AreaCheckServlet extends HttpServlet {
         if (areaCheck(x, y, r)) answer = "ok"; //"попадание";
         else answer = "не попадание";
 
+        if (!(r == 1 || r == 2.0 || r == 3 || r == 4 || r == 5)) {
+            answer = "не корректные данные";
+        }
+
+//        if (!( x == -1 || x == -2 || x == -3 || x == -4||x== 0 || x == 1 || x == 2 || x == 3 || x == 4)) {
+//            answer = "не корректные данные";
+//        }
+
         Result result = new Result(x, y, r, answer);
         addResult(request, result);
 
@@ -80,10 +88,11 @@ public class AreaCheckServlet extends HttpServlet {
         LinkedList<Result> listResult = (LinkedList<Result>) session.getAttribute(name);
         Result result = listResult.get(0);
 
+
 //        if (answer) out.print("попадание");
 //        else out.print("не попадание");
         out.print("<html> <!DOCTYPE HTML> <html> <head> <meta charset='UTF-8'> <title>Points</title>\n" +
-                "</head><body>" + x + "y = " + result.y + "r = " + result.r +"x = " + result.x +
+                "</head><body>" + x + "y = " + result.y + "r = " + result.r + "x = " + result.x +
                 "ghgbggggg</body> </html>");
 
     }
