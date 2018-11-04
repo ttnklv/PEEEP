@@ -59,10 +59,10 @@
 
 <div id="header" class="head">
     <h1>Дашкова Мария / Яковлева Татьяна  | P3211 | 28104</h1>
-    <h2>Определить попадание точки на координатную плоскость</h2>
+    <h2 id="title">Определить попадание точки на координатную плоскость</h2>
 </div>
 
-
+<div id="Yvalue">tttt</div>
 <div class="light entry">Dear, User!</div>
 
 <form method="get" action="${pageContext.request.contextPath}/controller" name="xyForm" onsubmit="return validate()">
@@ -109,17 +109,11 @@
 
         <label><input type="radio" class="radio" name="X" value="4">
             <span class="radio-custom"></span>
-            <span class="label">4</span></label></p>
+            <span class="label">4</span></label>
 
     </div>
 
-
-    <%--<div id="inputY" class="light entry">Введите значение числа Y:--%>
-        <%--<label>--%>
-            <%--<input type="text" name="Y" maxlength="5">--%>
-        <%--</label></div>--%>
-
-    <div id="inputY">Введите значение числа Y:
+    <div id="inputY" class="light entry">Введите значение числа Y:
         <input type="text" maxlength="5"  id="inpY" name="Y" placeholder="(-3, 3) ">
     </div>
 

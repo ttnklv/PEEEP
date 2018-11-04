@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.LinkedList;
+import java.util.ListIterator;
 import java.util.Map;
 
 public class AreaCheckServlet extends HttpServlet {
@@ -36,11 +37,11 @@ public class AreaCheckServlet extends HttpServlet {
         }
 
         String answer;
-        if (areaCheck(x, y, r)) answer = "ok"; //"попадание";
-        else answer = "не попадание";
+        if (areaCheck(x, y, r)) answer = "hit"; //"попадание";
+        else answer = "missed";
 
         if (!(r == 1 || r == 2.0 || r == 3 || r == 4 || r == 5)) {
-            answer = "не корректные данные";
+            answer = "incorrectly";
         }
 
 //        if (!( x == -1 || x == -2 || x == -3 || x == -4||x== 0 || x == 1 || x == 2 || x == 3 || x == 4)) {
@@ -85,16 +86,45 @@ public class AreaCheckServlet extends HttpServlet {
 
     private void drawAnswer(String x) {
 
+
         LinkedList<Result> listResult = (LinkedList<Result>) session.getAttribute(name);
-        Result result = listResult.get(0);
+//        Result result = listResult.get(0);
 
 
 //        if (answer) out.print("попадание");
 //        else out.print("не попадание");
-        out.print("<html> <!DOCTYPE HTML> <html> <head> <meta charset='UTF-8'> <title>Points</title>\n" +
-                "</head><body>" + x + "y = " + result.y + "r = " + result.r + "x = " + result.x +
-                "ghgbggggg</body> </html>");
+        out.print("<html> <!DOCTYPE HTML> <html> <head> <meta charset='UTF-8'> " +
+                "<title>Points</title>" +" <style type=\"text/css\">\n" +
+                        "   TABLE {\n" +
+                        "    background: maroon; /* Цвет фона таблицы */\n" +
+                        "    color: white; /* Цвет текста */\n" +
+                        "   }\n" +
+                        "   TD {\n" +
+                        "    background: navy; /* Цвет фона ячеек */\n" +
+                        "   }\n" +
+                        "  </style>"+
+                "</head><body>");
 
+        out.write("<table><tr><th>X</th><th>Y</th><th>R</th><th>Result</th></tr>");
+
+        for (Result aListResult : listResult) {
+            out.write("<tr>");
+            out.println("<td>");
+            out.println(aListResult.x);
+            out.println("</td>");
+            out.println("<td>");
+            out.println(aListResult.y);
+            out.println("</td>");
+            out.println("<td>");
+            out.println(aListResult.r);
+            out.println("</td>");
+            out.println("<td>");
+            out.println(aListResult.result);
+            out.println("</td>");
+            out.write("</tr>");
+        }
+
+        out.write("</table></body></html>");
     }
 
 

@@ -1,9 +1,13 @@
 		function setup() {
 			myCanvas = createCanvas(300, 400);
+            // document.getElementById("canvas").innerHTML = myCanvas;
+            // let x = (windowWidth - width) / 2;
+            // let y = (windowHeight - height) / 2;
+            // myCanvas.position(0,0);
 			background(200);
 
-			var c = color(255, 204, 0); 
-			fill(c); 
+            let c = color(255, 204, 0);
+            fill(c);
 			
 			rect(150, 200, 50, 50);
 			arc(150, 200, 100, 100, PI + 2* QUARTER_PI, TWO_PI);
@@ -24,11 +28,12 @@
 			//75 - коэффициент смещения из-за отсчета 
   			if (mouseIsPressed) {
     		ellipse(winMouseX, winMouseY - 75, 4, 4); 
-    		// document.getElementById("Y").innerHTML = winMouseY - 75;
-  			// document.getElementById("X").innerHTML = winMouseX;
+    		 document.getElementById("Yvalue").innerHTML = winMouseY - 75;
+  			 document.getElementById("Xvalue").innerHTML = winMouseX;
     	}
   			print(mouseIsPressed);
 		}
 
-		setup();
-		// draw();
+		 setup();
+        while (true){
+		 draw();}

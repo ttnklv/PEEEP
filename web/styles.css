@@ -110,7 +110,7 @@ div h1 {
     height: 60px;
     font-size: 80%;
     font-family: UbuntuMono-R;
-    color: #FDF4E3;
+    color: black;
     text-align: right;
 }
 
@@ -145,7 +145,7 @@ body {
 input[type="text"] {
     background: #C0C0C0;
     border: 1px solid black;
-    color: #C0C0C0;
+    color: black;
 }
 
 /*кнопка проверки*/
