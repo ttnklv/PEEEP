@@ -6,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page import="result.Result" %>
+<%@ page import="java.util.LinkedList" %>
 <html>
 <head>
     <title>WebDevelopment</title>
@@ -13,9 +15,11 @@
     <style>
         <%@include file="styles.css"%>
     </style>
-    <script type="text/javascript">
-        <%@include file="canvas.js"%>
-    </script>
+
+    <script src="jquery-3.3.1.min.js"></script>
+
+    <%--<script src="http://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.6/p5.js"></script>--%>
+    <%--<script src="http://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.6/addons/p5..."></script>--%>
 
     <script>
         function showError(container, errorMessage) {
@@ -61,6 +65,8 @@
     <h1>Дашкова Мария / Яковлева Татьяна  | P3211 | 28104</h1>
     <h2 id="title">Определить попадание точки на координатную плоскость</h2>
 </div>
+
+<div id="sketch-holder"></div>
 
 <div id="Yvalue">tttt</div>
 <div class="light entry">Dear, User!</div>
@@ -144,8 +150,42 @@
 
     </div>
 
-    <div><p><input type="submit" ></p></div>
+    <div><p><input type="submit"></p></div>
 </form>
 
+
+<div id="somediv"></div>
+
+<%
+    if (session.getAttribute("ListOfResultAttributes")==null){
+        LinkedList<Result> res = new LinkedList<Result>();
+        session.setAttribute("ListOfResultAttributes",res);}
+    LinkedList<Result> resultList = (LinkedList<Result>) session.getAttribute("ListOfResultAttributes");
+    %>
+<%--<input type="text" value="<%= rget().x %>" />--%>
+<table><tr><th>X</th><th>Y</th><th>R</th><th>result</th></tr>
+
+<% for (final Result entry : resultList) { %>
+<tr>
+    <td>
+        <%= entry.x %>
+    </td>
+    <td>
+        <%= entry.y %>
+    </td>
+    <td>
+        <%= entry.r %>
+    </td>
+    <td>
+        <%= entry.result %>
+    </td>
+</tr>
+
+<%}%>
+</table>
+<%--<input type="text" value="<%=resultList.get(0).x%>"/>--%>
+<script type="text/javascript">
+    <%@include file="canvas.js"%>
+</script>
 </body>
 </html>

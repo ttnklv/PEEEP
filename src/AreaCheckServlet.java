@@ -1,4 +1,6 @@
 
+import result.Result;
+
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -6,14 +8,14 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.LinkedList;
-import java.util.ListIterator;
-import java.util.Map;
+
 
 public class AreaCheckServlet extends HttpServlet {
 
     PrintWriter out;
     HttpSession session;
     String name;
+    LinkedList<Result> listResult;
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         //String parameters = request.getParameter();
@@ -51,21 +53,27 @@ public class AreaCheckServlet extends HttpServlet {
         Result result = new Result(x, y, r, answer);
         addResult(request, result);
 
+//        String json = new Gson().toJson(listResult);
+
+//        response.setContentType("application/json");
+//        response.setCharacterEncoding("UTF-8");
+
+//        response.getWriter().write(json);
+
         drawAnswer(answer);
     }
 
     private void addResult(HttpServletRequest request, Result result) {
         session = request.getSession();
-
         name = "ListOfResultAttributes";
 
         if (session.getAttribute(name) == null) {
             session.setAttribute(name, new LinkedList<Result>());
         }
 
-        LinkedList<Result> listResult = (LinkedList<Result>) session.getAttribute(name);
+        listResult = (LinkedList<Result>) session.getAttribute(name);
         listResult.add(result);
-        session.setAttribute(name, listResult);
+
     }
 
     private boolean areaCheck(double x, double y, double r) {
@@ -88,7 +96,7 @@ public class AreaCheckServlet extends HttpServlet {
 
 
         LinkedList<Result> listResult = (LinkedList<Result>) session.getAttribute(name);
-//        Result result = listResult.get(0);
+//        result.Result result = listResult.get(0);
 
 
 //        if (answer) out.print("попадание");
@@ -105,7 +113,7 @@ public class AreaCheckServlet extends HttpServlet {
                         "  </style>"+
                 "</head><body>");
 
-        out.write("<table><tr><th>X</th><th>Y</th><th>R</th><th>Result</th></tr>");
+        out.write("<table><tr><th>X</th><th>Y</th><th>R</th><th>result</th></tr>");
 
         for (Result aListResult : listResult) {
             out.write("<tr>");

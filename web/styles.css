@@ -24,6 +24,9 @@
     src: url(fonts/NotCourierSans.otf); /* Путь к файлу со шрифтом */
 }
 
+/*.p5Canvas{*/
+    /*margin-right: auto;*/
+/*}*/
 /*задание общих параметров классов*/
 .bright {
     color: #F75E25;
